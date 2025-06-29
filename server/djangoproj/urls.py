@@ -27,5 +27,10 @@ urlpatterns = [
     path('contact/', TemplateView.as_view(template_name="Contact.html")),
     path('login/', TemplateView.as_view(template_name="index.html")),
     path('register/', TemplateView.as_view(template_name="index.html")),
+    path(route='get_dealers', view=views.get_dealerships, name='get_dealers'),
+    path(route='get_dealers/<str:state>', view=views.get_dealerships, name='get_dealers_by_state'),
+    path(route='dealer/<int:dealer_id>', view=views.get_dealer_details, name='dealer_details'),
+    path(route='reviews/dealer/<int:dealer_id>', view=views.get_dealer_reviews, name='dealer_details'),
+    path(route='add_review', view=views.add_review, name='add_review'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
